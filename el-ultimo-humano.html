@@ -116,6 +116,7 @@
     margin: 1.5rem 0.5rem 0 0.5rem;
     user-select: none;
   }
+  
   .btn-back:hover, .btn-download:hover {
     background: #26b7c9;
     box-shadow: 0 0 30px #26b7c9;
@@ -142,6 +143,14 @@
       height: 400px;
     }
   }
+
+  .btn-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
 </style>
 </head>
 <body>
@@ -170,10 +179,11 @@
     </iframe>
   </div>
 
-  <div>
-    <a href="index.html" class="btn-back" aria-label="Volver a la página principal">← Volver a Inicio</a>
-    <a href="https://drive.google.com/uc?export=download&id=1VTRcuRBfbo_I5lYUVqSbHKOT677BzSv8" target="_blank" class="btn-download" aria-label="Descargar el libro El último humano">Descargar PDF</a>
-  </div>
+<div class="btn-container">
+  <a href="index.html" class="btn-back">← Volver a Inicio</a>
+  <a href="https://drive.google.com/uc?export=download&id=..." target="_blank" class="btn-download">Descargar PDF</a>
+</div>
+
 </main>
 
 <footer>
