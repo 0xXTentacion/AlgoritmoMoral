@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Conoce más sobre nosotros - Algoritmo Moral</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #0b0f1a;
+    color: #eee;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    background: #12192f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    z-index: 20;
+  }
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #3ff9ff;
+    letter-spacing: 2px;
+    user-select: none;
+  }
+  nav {
+    display: flex;
+    gap: 2rem;
+  }
+  nav a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #3ff9ff;
+  }
+
+  main {
+    max-width: 1000px;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 2.8rem;
+    color: #3ff9ff;
+    margin-bottom: 2rem;
+  }
+
+  .profiles {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .profile-card {
+    cursor: pointer;
+    max-width: 250px;
+    user-select: none;
+    position: relative;
+  }
+  .profile-card img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(63, 249, 255, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+  .profile-card:hover img {
+    box-shadow: 0 6px 40px rgba(63, 249, 255, 0.7);
+  }
+  .profile-name {
+    margin-top: 0.8rem;
+    font-weight: 700;
+    color: #3ff9ff;
+    font-size: 1.2rem;
+  }
+
+  /* Contenedor info desplegable */
+  .profile-info {
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e2647;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(63, 249, 255, 0.5);
+    padding: 1.5rem;
+    width: 280px;
+    color: #ddd;
+    text-align: left;
+    font-size: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 30;
+  }
+
+  /* Mostrar info */
+  .profile-info.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Botón cerrar */
+  .close-btn {
+    background: #3ff9ff;
+    color: #0b0f1a;
+    border: none;
+    border-radius: 40px;
+    padding: 0.3rem 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    float: right;
+    user-select: none;
+    transition: background 0.3s ease;
+  }
+  .close-btn:hover {
+    background: #26b7c9;
+  }
+
+    /* Footer */
+  footer {
+    background: #12192f;
+    text-align: center;
+    padding: 1rem 0;
+    color: #888;
+    font-size: 0.9rem;
+    user-select: none;
+  } 
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .profiles {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .profile-info {
+      position: static;
+      transform: none;
+      width: 90vw;
+      margin-top: 1rem;
+      box-shadow: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Algoritmo Moral</div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="conoce-mas-sobre-nosotros.html">Conoce más sobre nosotros</a>
+    <a href="contactanos.html">Contáctanos</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Conoce más sobre nosotros</h1>
+
+  <div class="profiles">
+
+    <div class="profile-card" tabindex="0" aria-expanded="false" aria-controls="info-rossy" role="button" aria-label="Más información sobre Rossy">
+      <img src="/mnt/data/fe275524-b75a-4a2c-96eb-6407701d56fb.png" alt="Foto de Rossy" />
+      <div class="profile-name">ROSSY</div>
+      <div class="profile-info" id="info-rossy" aria-hidden="true">
+        <button class="close-btn" aria-label="Cerrar información de Rossy">&times;</button>
+        <p>Rossy Yuliana es estudiante de Comunicación Social con pasión por la inteligencia artificial y la ética digital. Participa activamente en proyectos transmedia y se interesa en la difusión responsable del conocimiento tecnológico.</p>
+      </div>
+    </div>
+
+    <div class="profile-card" tabindex="0" aria-expanded="false" aria-controls="info-yeison" role="button" aria-label="Más información sobre Yeison">
+      <img src="yeison.jpeg" alt="Foto de Yeison" />
+      <div class="profile-name">YEISON</div>
+      <div class="profile-info" id="info-yeison" aria-hidden="true">
+        <button class="close-btn" aria-label="Cerrar información de Yeison">&times;</button>
+        <p>Yeison Palacio es un comunicador social interesado en los avances tecnológicos y su impacto social. Le gusta combinar el análisis crítico con formatos creativos para acercar la IA a diferentes públicos.</p>
+      </div>
+    </div>
+
+    <div class="profile-card" tabindex="0" aria-expanded="false" aria-controls="info-josselyn" role="button" aria-label="Más información sobre Josselyn">
+      <img src="josselyn.jpeg" alt="Foto de Josselyn" />
+      <div class="profile-name">JOSSELYN</div>
+      <div class="profile-info" id="info-josselyn" aria-hidden="true">
+        <button class="close-btn" aria-label="Cerrar información de Josselyn">&times;</button>
+        <p>Josselyn Angulo es estudiante de Comunicación Social apasionada por el transmedia y la innovación digital. Busca crear experiencias informativas y reflexivas sobre la inteligencia artificial.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Texto adicional -->
+<section style="max-width: 700px; margin: 3rem auto 0; text-align: left; color: #ccc; font-size: 1rem; line-height: 1.6;">
+  <p>¡Hola! Somos Yeison Palacio, Josselyn Angulo y Rosy Yuliana, estudiantes de Comunicación Social, y esta página hace parte de nuestro proyecto transmedia sobre la inteligencia artificial.</p>
+
+  <p>Nuestro objetivo es explorar cómo la IA está transformando el mundo, desde la comunicación hasta la vida cotidiana. A través de este proyecto, combinamos distintas plataformas y formatos para crear una experiencia informativa, crítica y creativa. Queremos invitarte a reflexionar con nosotros sobre los desafíos, oportunidades y curiosidades de esta tecnología que está cambiando la forma en que vivimos y nos relacionamos.</p>
+
+  <p>¡Bienvenidos a nuestro mundo transmedia!</p>
+</section>
+
+<footer>
+  &copy; 2025 Algoritmo Moral. Todos los derechos reservados.
+</footer>
+
+<script>
+  // Funcionalidad para abrir/cerrar info perfiles
+  const cards = document.querySelectorAll('.profile-card');
+
+  cards.forEach(card => {
+    const info = card.querySelector('.profile-info');
+    const closeBtn = card.querySelector('.close-btn');
+
+    card.addEventListener('click', () => {
+      // Cerrar otros abiertos
+      cards.forEach(c => {
+        if(c !== card) {
+          c.querySelector('.profile-info').classList.remove('show');
+          c.setAttribute('aria-expanded', 'false');
+          c.querySelector('.profile-info').setAttribute('aria-hidden', 'true');
+        }
+      });
+      // Toggle actual
+      const isOpen = info.classList.toggle('show');
+      card.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      info.setAttribute('aria-hidden', !isOpen);
+    });
+
+    closeBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      info.classList.remove('show');
+      card.setAttribute('aria-expanded', 'false');
+      info.setAttribute('aria-hidden', 'true');
+    });
+
+    // También permitir abrir con teclado (Enter o Space)
+    card.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

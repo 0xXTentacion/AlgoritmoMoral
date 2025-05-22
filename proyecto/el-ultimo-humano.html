@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>El último humano - Algoritmo Moral</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #0b0f1a;
+    color: #eee;
+  }
+
+  /* Header (igual que en la página principal) */
+  header {
+    position: sticky;
+    top: 0;
+    background: #12192f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    z-index: 20;
+  }
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #3ff9ff;
+    letter-spacing: 2px;
+    cursor: default;
+    user-select: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 2rem;
+  }
+  nav a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #3ff9ff;
+  }
+
+  /* Contenedor principal */
+  main {
+    max-width: 900px;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 2.8rem;
+    color: #3ff9ff;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 1.15rem;
+    color: #ccc;
+    margin-bottom: 1.4rem;
+    line-height: 1.6;
+  }
+
+  .img-container {
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .img-container img {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 25px rgba(63, 249, 255, 0.4);
+    transition: box-shadow 0.3s ease;
+  }
+  .img-container img:hover {
+    box-shadow: 0 6px 40px rgba(63, 249, 255, 0.7);
+  }
+
+  /* Contenedor PDF */
+  .pdf-container {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(63, 249, 255, 0.4);
+  }
+
+  /* Botones */
+  .btn-back, .btn-download {
+    display: inline-block;
+    background: #3ff9ff;
+    color: #0b0f1a;
+    padding: 0.8rem 2rem;
+    border-radius: 40px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 0 15px #3ff9ff;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    margin: 1.5rem 0.5rem 0 0.5rem;
+    user-select: none;
+  }
+  .btn-back:hover, .btn-download:hover {
+    background: #26b7c9;
+    box-shadow: 0 0 30px #26b7c9;
+  }
+
+    /* Footer */
+  footer {
+    background: #12192f;
+    text-align: center;
+    padding: 1rem 0;
+    color: #888;
+    font-size: 0.9rem;
+    user-select: none;
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+    iframe {
+      height: 400px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Algoritmo Moral</div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="conoce-mas-sobre-nosotros.html">Conoce más sobre nosotros</a>
+    <a href="contactanos.html">Contáctanos</a>
+  </nav>
+</header>
+
+<main>
+  <h1>El último humano</h1>
+
+  <p>Este libro narra la historia de Julián, un joven que comienza a descubrir el impacto de la inteligencia artificial en su vida cotidiana y en la sociedad que lo rodea. A través de su mirada, nos adentramos en una realidad donde la tecnología avanza más rápido que la conciencia humana, y donde las decisiones éticas, sociales y personales cobran un nuevo sentido.</p>
+
+  <p>La historia de Julián es una mezcla de ficción y reflexión que invita al lector a cuestionarse: ¿estamos preparados para convivir con la inteligencia artificial?</p>
+
+  <div class="pdf-container" aria-label="Visor del libro El último humano">
+    <iframe 
+      src="https://drive.google.com/file/d/1VTRcuRBfbo_I5lYUVqSbHKOT677BzSv8/preview" 
+      allow="autoplay" 
+      title="Libro El último humano">
+    </iframe>
+  </div>
+
+  <div>
+    <a href="index.html" class="btn-back" aria-label="Volver a la página principal">← Volver a Inicio</a>
+    <a href="https://drive.google.com/uc?export=download&id=1VTRcuRBfbo_I5lYUVqSbHKOT677BzSv8" target="_blank" class="btn-download" aria-label="Descargar el libro El último humano">Descargar PDF</a>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Algoritmo Moral. Todos los derechos reservados.
+</footer>
+
+</body>
+</html>

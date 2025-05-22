@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Algoritmo Moral - IA Futuro</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap');
+
+  /* Reset y base */
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0; padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #0b0f1a;
+    color: #eee;
+    scroll-behavior: smooth;
+  }
+
+  /* Fondo animado */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(270deg, #0b0f1a, #12192f, #0b0f1a);
+    background-size: 600% 600%;
+    animation: gradientShift 30s ease infinite;
+    z-index: -1;
+  }
+  @keyframes gradientShift {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    background: #12192f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    z-index: 20;
+  }
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #3ff9ff;
+    letter-spacing: 2px;
+    cursor: default;
+    user-select: none;
+  }
+
+  /* Navegacion desktop */
+  nav {
+    display: flex;
+    gap: 2rem;
+  }
+  nav a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #3ff9ff;
+  }
+
+  /* Boton hamburguesa */
+  .menu-btn {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 25px;
+    height: 20px;
+    justify-content: space-between;
+  }
+  .menu-btn span {
+    background: #3ff9ff;
+    height: 3px;
+    border-radius: 3px;
+    transition: 0.3s;
+  }
+
+  /* Responsive menu */
+  @media (max-width: 768px) {
+    nav {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      background: #12192f;
+      width: 200px;
+      height: calc(100% - 60px);
+      flex-direction: column;
+      padding: 2rem 1rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      box-shadow: -3px 0 12px rgba(0,0,0,0.7);
+      border-radius: 0 0 0 12px;
+      z-index: 15;
+    }
+    nav.open {
+      transform: translateX(0);
+    }
+    .menu-btn {
+      display: flex;
+    }
+  }
+
+  /* Hero */
+  .hero {
+    background: url('ia.png') center center/cover no-repeat;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 15, 26, 0.85);
+    z-index: 0;
+  }
+  .hero h1, .hero p {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0;
+    animation: fadeSlideDown 1.2s ease forwards;
+    opacity: 0;
+  }
+  .hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.2rem;
+    color: #3ff9ff;
+    margin-bottom: 1rem;
+    animation-delay: 0.3s;
+  }
+  .hero p {
+    font-size: 1.3rem;
+    color: #a0d8f7;
+    animation-delay: 0.7s;
+  }
+
+  @keyframes fadeSlideDown {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+  }
+
+  /* Main */
+  main {
+    max-width: 1200px;
+    margin: 3rem auto 5rem;
+    padding: 0 1rem;
+  }
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .card {
+    background: #1e2647;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(63, 249, 255, 0.25);
+    width: 280px;
+    text-align: center;
+    padding: 2rem 1.2rem 2.5rem;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+  }
+  /* Animacion con delay para cada tarjeta */
+  .card:nth-child(1) { animation-delay: 1s; }
+  .card:nth-child(2) { animation-delay: 1.3s; }
+  .card:nth-child(3) { animation-delay: 1.6s; }
+
+  .card:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 10px 35px rgba(63, 249, 255, 0.7);
+  }
+
+  .card img {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    margin-bottom: 1.2rem;
+    filter: drop-shadow(0 2px 2px rgba(63, 249, 255, 0.4));
+    transition: filter 0.3s ease;
+  }
+  .card:hover img {
+    filter: drop-shadow(0 4px 8px rgba(63, 249, 255, 0.7));
+  }
+
+  .card h3 {
+    color: #3ff9ff;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    user-select: none;
+  }
+
+  .card button {
+    background: #3ff9ff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 40px;
+    color: #0b0f1a;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 0 15px #3ff9ff;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    animation: pulse 2.5s infinite;
+  }
+  .card button:hover {
+    background: #26b7c9;
+    box-shadow: 0 0 25px #26b7c9;
+  }
+
+  /* Animaciones */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 15px #3ff9ff;
+    }
+    50% {
+      box-shadow: 0 0 30px #3ff9ff;
+    }
+  }
+
+  /* Footer */
+  footer {
+    background: #12192f;
+    text-align: center;
+    padding: 1rem 0;
+    color: #888;
+    font-size: 0.9rem;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Algoritmo Moral</div>
+  <nav id="nav-menu">
+    <a href="index.html">Inicio</a>
+    <a href="conoce-mas-sobre-nosotros.html">Conoce más sobre nosotros</a>
+    <a href="contactanos.html">Contáctanos</a>
+  </nav>
+  <div class="menu-btn" id="menu-btn" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<section class="hero" role="banner" aria-label="Sección principal de bienvenida">
+  <h1>IA: ¿Aliada del progreso o riesgo del futuro?</h1>
+  <p>Explora el impacto ético y social de la inteligencia artificial en nuestra vida cotidiana.</p>
+</section>
+
+<main>
+  <div class="cards" role="list">
+    <article class="card" role="listitem" tabindex="0" aria-label="Libro: El último humano">
+      <img src="ultimohombre.png" alt="Portada del libro El último humano" />
+      <h3>El último humano</h3>
+      <a href="el-ultimo-humano.html"><button>Libro</button></a>
+    </article>
+    <article class="card" role="listitem" tabindex="0" aria-label="Podcast: Revolución artificial">
+      <img src="revolucion1.png" alt="Logo podcast Revolución artificial" />
+      <h3>Revolución artificial</h3>
+    <a href="revolucion-artificial.html"><button>Podcast</button></a>
+    </article>
+    <article class="card" role="listitem" tabindex="0" aria-label="Cortometraje: Sin máscara">
+      <img src="sinmascara.png" alt="Cartel cortometraje Sin máscara" />
+      <h3>Sin máscara</h3>
+    <a href="sin-mascaras.html"><button>Cortometraje</button></a>
+    </article>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Algoritmo Moral. Todos los derechos reservados. By: Sebastien
+</footer>
+
+<script>
+  // Menu hamburguesa toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const navMenu = document.getElementById('nav-menu');
+
+  menuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+    menuBtn.classList.toggle('open');
+  });
+
+  // Cerrar menú al clicar fuera o en enlace
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      menuBtn.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
